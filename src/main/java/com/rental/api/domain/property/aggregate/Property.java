@@ -1,14 +1,18 @@
 package com.rental.api.domain.property.aggregate;
 
+import com.rental.api.domain.shared.entity.BaseEntity;
+import com.rental.api.domain.shared.valueobject.Identifier;
+import jakarta.persistence.Entity;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
+@Entity
 @Data
-public class Property {
-    private String id;
+public class Property extends BaseEntity {
     private String ownerId;
     private String title;
     private String thumbnail;
@@ -22,6 +26,12 @@ public class Property {
     private boolean available = true;
     private String status;
     private Timestamp createdAt;
-    private List<Media> mediaList;
-    private List<Amenity> amenities;
+
+    public Property() {
+        super(null);
+    }
+
+    public Property(String id) {
+        super(id);
+    }
 }
